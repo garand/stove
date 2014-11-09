@@ -6,12 +6,10 @@ $mobile: "only screen and (max-width : 600px)";
 
 // Colors
 
-$color-darkred: #2a1210;
-$color-red:     #720316;
-$color-darktan: #b98230;
-$color-tan:     #fec280;
-$color-grey:    #6c655b;
+$color-primary: #dc3729;
+$color-secondary: #1e1e20;
+$color-text: $color-secondary;
+$color-label: #8f9e9c;
 
 // Fonts
-@import url("http://fonts.googleapis.com/css?family=Roboto");
-$font-sans: "Roboto", sans-serif;
+$font-sans: "Helvetical Neue", "Helvetica", sans-serif;

@@ -5,36 +5,44 @@
 @import "layout";
 
 body {
-  background: $color-darkred;
-  color: $color-tan;
+  background: $color-secondary;
   font-family: $font-sans;
+  letter-spacing: -.25px;
+  padding-top: 56px;
+  color: #fff;
 }
 
 header {
   text-align: center;
-  font-size: 28px;
+  background: $color-primary;
+  color: #fff;
+  font-weight: 600;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 label {
   display: block;
-  text-align: center;
-  padding: $spacing;
+  padding: $spacing * 1.25;
+  color: $color-label;
+  font-weight: 300;
 }
 
 input {
   display: block;
-  -webkit-appearance: none;
-     -moz-appearance: none;
   border: 0;
-  border-radius: 4px;
-  padding: 10px;
-  color: $color-darkred;
+  border-radius: 0;
+  padding: $spacing * 1.25;
   width: 100%;
-  margin-bottom: $spacing;
+  color: $color-text;
 
   &[type="submit"] {
-    background: $color-darktan;
-    color: $color-darkred;
-    padding: $spacing;
+    background: $color-primary;
+    color: #fff;
+    margin-top: $spacing * 2;
+    font-weight: 500;
   }
 }

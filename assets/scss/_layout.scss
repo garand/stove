@@ -5,7 +5,10 @@ body {
   width: 100%;
 }
 
-header,
+header {
+  padding: $spacing * 3 $spacing $spacing $spacing;
+}
+
 footer {
   display: table-row;
   height: 1px;
@@ -23,7 +26,7 @@ footer {
     display: table;
     @include page-width;
     padding: 0;
-    border-spacing: $spacing * 2;
+    border-spacing: 0 $spacing;
 
     @media #{$mobile} {
       padding: 0;
@@ -35,7 +38,7 @@ footer {
 
       @media #{$mobile} {
         display: block;
-        margin: $spacing;
+        margin: $spacing 0;
       }
     }
   }
