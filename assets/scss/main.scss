@@ -10,6 +10,7 @@ body {
   letter-spacing: -.25px;
   padding-top: 56px;
   color: #fff;
+  font-size: 0;
 }
 
 header {
@@ -17,6 +18,7 @@ header {
   background: $color-primary;
   color: #fff;
   font-weight: 600;
+  font-size: 16px;
   position: fixed;
   z-index: 10;
   top: 0;
@@ -29,6 +31,7 @@ label {
   padding: $spacing * 1.25;
   color: $color-label;
   font-weight: 300;
+  font-size: 16px;
 }
 
 input {
@@ -38,6 +41,43 @@ input {
   padding: $spacing * 1.25;
   width: 100%;
   color: $color-text;
+  font-size: 16px;
+
+  &[type="radio"] {
+    display: none;
+
+    &[value="0"] + label {
+      border-left: 0;
+      border-right: 0;
+    }
+
+    &[value="100"] + label {
+      border-left: 0;
+      border-right: 0;
+    }
+
+    &[value="50"] + label {
+      border-left: 0;
+      border-right: 0;
+    }
+
+    &:checked + label {
+      color: #fff;
+      font-weight: bold;
+      background: $color-primary;
+    }
+
+    & + label {
+      display: inline-block;
+      width: 20%;
+      font-size: 14px;
+      text-align: center;
+      cursor: pointer;
+      border: 1px solid $color-primary;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
 
   &[type="submit"] {
     background: $color-primary;
