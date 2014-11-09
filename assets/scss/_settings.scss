@@ -1,0 +1,17 @@
+$page-width: 980px;
+$sidebar-width: 280px;
+$spacing: 10px;
+
+$mobile: "only screen and (max-width : 600px)";
+
+// Colors
+
+$color-darkred: #2a1210;
+$color-red:     #720316;
+$color-darktan: #b98230;
+$color-tan:     #fec280;
+$color-grey:    #6c655b;
+
+// Fonts
+@import url("http://fonts.googleapis.com/css?family=Roboto");
+$font-sans: "Roboto", sans-serif;
