@@ -1,5 +1,5 @@
 <?php include 'header.php' ?>
 <div class="content">
-  Thanks!
+  Thank you for serving!
 </div>
 <?php include 'footer.php' ?>
