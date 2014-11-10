@@ -42,6 +42,7 @@ input {
   width: 100%;
   color: $color-text;
   font-size: 16px;
+  margin-bottom: $spacing;
 
   @media #{$mobile} {
     border-radius: 0;
@@ -90,13 +91,14 @@ input {
       border: 1px solid $color-primary;
       padding-left: 0;
       padding-right: 0;
+      margin-bottom: $spacing;
     }
   }
 
   &[type="submit"] {
     background: $color-primary;
     color: #fff;
-    margin-top: $spacing * 2;
+    margin-top: $spacing * 3;
     margin-bottom: $spacing;
     font-weight: 500;
   }
