@@ -135,6 +135,11 @@ input {
       background: $color-primary;
       border-color: $color-primary;
       z-index: 1;
+      font-weight: bold;
+
+      @media #{$retina} {
+        font-weight: 400;
+      }
     }
 
     & + label {
@@ -152,7 +157,6 @@ input {
       margin-left: -1px;
       margin-right: -1px;
       text-transform: none;
-
       box-sizing: content-box;
 
       @media #{$retina} {
