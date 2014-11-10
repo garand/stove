@@ -14,3 +14,5 @@ else {
   echo "Please create a local configuration file. There is a template file named 'config.local.sample.php' that you can reference.";
   die;
 }
+
+date_default_timezone_set('America/Detroit');
