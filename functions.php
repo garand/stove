@@ -1,5 +1,6 @@
 <?php
 
+require ('vendor/autoload.php');
 require ("config.php");
 
 $link = mysql_connect($db_host,$db_user,$db_pass);
