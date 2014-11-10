@@ -50,11 +50,15 @@ header {
     font-family: Georgia, serif;
     font-style: italic;
     border-radius: 50%;
-    border: 1.5px solid #fff;
+    border: 2px solid #fff;
     line-height: 0;
     width: 24px;
     height: 24px;
     line-height: 22px;
+
+    @media #{$retina} {
+      border-width: 1.5px;
+    }
   }
 }
 
