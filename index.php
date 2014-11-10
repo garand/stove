@@ -14,6 +14,8 @@ if ( $_POST ) {
   $sql = "INSERT INTO log (outside_temp,stove_temp,pre_fill_level,post_fill_level,filled_by,datetime) VALUES ('$outside_temp','$stove_temp','$pre_fill_level','$post_fill_level','$filled_by', NOW())";
   $data = mysql_query($sql,$link);
 
+  send_sms( "Stove Filled\nTemp: " . $stove_temp . "\nFilled By: " . $filled_by );
+
   setcookie( "filled_by" , $filled_by, time() + (10 * 365 * 24 * 60 * 60) );
   $default_filled_by = $filled_by;
 
