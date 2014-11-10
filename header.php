@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-  <title>Stove Log</title>
+  <title>Stove</title>
   <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -15,7 +15,7 @@
 <body>
   <header>
     <div class="header-inner">
-      Stove Log
+      Stove
     </div>
   </header>
   <div class="container">
