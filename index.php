@@ -31,7 +31,6 @@ $default_outside_temp = file_get_contents( 'http://api.openweathermap.org/data/2
 $default_outside_temp = json_decode($default_outside_temp, true);
 $default_outside_temp = round((( $default_outside_temp["main"]["temp"] - 273.15 ) * 1.8) + 32);
 
-
 ?>
 <?php include 'header.php' ?>
 <div class="content">
