@@ -37,23 +37,37 @@ label {
 input {
   display: block;
   border: 0;
-  border-radius: 0;
+  border-radius: 4px;
   padding: $spacing * 1.25;
   width: 100%;
   color: $color-text;
   font-size: 16px;
 
+  @media #{$mobile} {
+    border-radius: 0;
+  }
+
   &[type="radio"] {
     display: none;
 
     &[value="0"] + label {
-      border-left: 0;
       border-right: 0;
+      border-radius: 4px 0 0 4px;
+
+      @media #{$mobile} {
+        border-left: 0;
+        border-radius: 0;
+      }
     }
 
     &[value="100"] + label {
       border-left: 0;
-      border-right: 0;
+      border-radius: 0 4px 4px 0;
+
+      @media #{$mobile} {
+        border-right: 0;
+        border-radius: 0;
+      }
     }
 
     &[value="50"] + label {
@@ -83,6 +97,7 @@ input {
     background: $color-primary;
     color: #fff;
     margin-top: $spacing * 2;
+    margin-bottom: $spacing;
     font-weight: 500;
   }
 }
