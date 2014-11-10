@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="/assets/css/main.css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/assets/js/fastclick.js"></script>
   <script type="text/javascript" src="/assets/js/main.js"></script>
 </head>
 <body>
