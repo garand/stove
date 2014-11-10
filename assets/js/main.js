@@ -1,6 +1,12 @@
 $(function(){
   FastClick.attach(document.body);
   $("form").validate({errorPlacement: function(error, element) { }});
+
+  $(".last-fill").click(function() {
+    setTimeout(function() {
+      alert( last_fill_alert );
+    }, 0);
+  });
 });
 
 function alert(content){

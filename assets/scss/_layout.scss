@@ -7,6 +7,12 @@ body {
 
 header {
   padding: $spacing * 3 $spacing $spacing $spacing;
+
+  [class$="inner"] {
+    @include page-width;
+    padding: 0;
+    max-width: $page-width - $spacing * 4;
+  }
 }
 
 footer {

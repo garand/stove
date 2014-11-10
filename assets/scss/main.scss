@@ -24,6 +24,37 @@ header {
   top: 0;
   left: 0;
   right: 0;
+
+  [class$="inner"] {
+    position: relative;
+  }
+}
+
+.last-fill {
+  cursor: pointer;
+  position: absolute;
+  right: -$spacing;
+  bottom: -$spacing;
+  width: $spacing * 4 + 24px;
+  height: $spacing * 4 + 18px;
+  text-align: right;
+  vertical-align: bottom;
+
+  span {
+    display: inline-block;
+    position: absolute;
+    bottom: $spacing;
+    right: $spacing;
+    text-align: center;
+    font-family: Georgia, serif;
+    font-style: italic;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    line-height: 0;
+    width: 24px;
+    height: 24px;
+    line-height: 22px;
+  }
 }
 
 label {
@@ -102,4 +133,12 @@ input {
     margin-bottom: $spacing;
     font-weight: 500;
   }
+}
+
+iframe {
+  display: none;
+}
+
+.debug {
+  font-size: 16px;
 }
