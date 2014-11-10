@@ -8,7 +8,7 @@ body {
   background: $color-background;
   font-family: $font-sans;
   letter-spacing: -.25px;
-  padding-top: 56px;
+  padding-top: $spacing * 7;
   color: #fff;
   font-size: 0;
 }
@@ -79,7 +79,7 @@ input {
   color: $color-text;
   font-size: 16px;
   margin-bottom: $spacing;
-  border: 1px solid #c8c7cc;
+  border: .5px solid #c8c7cc;
 
   @media #{$mobile} {
     border-radius: 0;
@@ -119,11 +119,11 @@ input {
 
     & + label {
       display: inline-block;
-      width: calc(20% + 2px);
+      width: calc(20% + 1.9px);
       font-size: 12px;
       text-align: center;
       cursor: pointer;
-      border: 1px solid #c8c7cc;
+      border: .5px solid #c8c7cc;
       padding-left: 0;
       padding-right: 0;
       padding-bottom: $spacing * 1.25;
@@ -138,7 +138,7 @@ input {
     background: $color-primary;
     color: #fff;
     margin-top: $spacing * 3;
-    margin-bottom: $spacing;
+    margin-bottom: $spacing * 3;
     border-color: $color-primary;
   }
 }

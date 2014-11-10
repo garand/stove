@@ -6,7 +6,7 @@ body {
 }
 
 header {
-  padding: $spacing * 3 $spacing $spacing $spacing;
+  padding: ($spacing * 3 + 2px) $spacing $spacing + 2.5px $spacing;
 
   [class$="inner"] {
     @include page-width;
