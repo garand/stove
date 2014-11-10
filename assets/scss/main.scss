@@ -50,7 +50,7 @@ header {
     font-family: Georgia, serif;
     font-style: italic;
     border-radius: 50%;
-    border: 2px solid #fff;
+    border: 1.5px solid #fff;
     line-height: 0;
     width: 24px;
     height: 24px;
@@ -79,12 +79,16 @@ input {
   color: $color-text;
   font-size: 16px;
   margin-bottom: $spacing;
-  border: .5px solid #c8c7cc;
+  border: 1px solid #c8c7cc;
 
   @media #{$mobile} {
     border-radius: 0;
     border-left: 0;
     border-right: 0;
+  }
+
+  @media #{$retina} {
+    border-width: .5px;
   }
 
   &[type="radio"] {
@@ -95,6 +99,12 @@ input {
 
       @media #{$mobile} {
         border-radius: 0;
+        border-left: 0;
+        padding-left: .5px;
+      }
+
+      @media #{$retina} {
+        padding-left: .25px;
       }
     }
 
@@ -103,6 +113,12 @@ input {
 
       @media #{$mobile} {
         border-radius: 0;
+        border-right: 0;
+        padding-right: .5px;
+      }
+
+      @media #{$retina} {
+        padding-right: .25px;
       }
     }
 
@@ -119,11 +135,11 @@ input {
 
     & + label {
       display: inline-block;
-      width: calc(20% + 1.9px);
+      width: calc(20%);
       font-size: 12px;
       text-align: center;
       cursor: pointer;
-      border: .5px solid #c8c7cc;
+      border: 1px solid #c8c7cc;
       padding-left: 0;
       padding-right: 0;
       padding-bottom: $spacing * 1.25;
@@ -131,6 +147,14 @@ input {
       background: #fff;
       margin-left: -1px;
       margin-right: -1px;
+
+      box-sizing: content-box;
+
+      @media #{$retina} {
+        border-width: .5px;
+        margin-left: -.5px;
+        margin-right: -.5px;
+      }
     }
   }
 
