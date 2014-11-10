@@ -10,8 +10,9 @@ if ( $_POST ) {
   $pre_fill_level = mysql_real_escape_string( $pre_fill_level );
   $post_fill_level = mysql_real_escape_string( $post_fill_level );
   $filled_by = mysql_real_escape_string( $filled_by );
+  $datetime = date( 'Y-m-d H:i:s', time());
 
-  $sql = "INSERT INTO log (outside_temp,stove_temp,pre_fill_level,post_fill_level,filled_by,datetime) VALUES ('$outside_temp','$stove_temp','$pre_fill_level','$post_fill_level','$filled_by', NOW())";
+  $sql = "INSERT INTO log (outside_temp,stove_temp,pre_fill_level,post_fill_level,filled_by,datetime) VALUES ('$outside_temp','$stove_temp','$pre_fill_level','$post_fill_level','$filled_by','$datetime')";
   $data = mysql_query($sql,$link);
 
   send_sms( "Stove Temp: " . $stove_temp . "\nOutside Temp: " . $outside_temp . "\nPre-Fill Level: " . $pre_fill_level . "%\nPost-Fill Level: " . $post_fill_level . "%\nFilled By: " . $filled_by );
@@ -19,15 +20,20 @@ if ( $_POST ) {
   setcookie( "filled_by" , $filled_by, time() + (10 * 365 * 24 * 60 * 60) );
   $default_filled_by = $filled_by;
 
-  $success_message = '
-  <script type="text/javascript">
-    alert("Thank you for serving!");
-  </script>
-  ';
+  $success_message = "Thank you for serving!";
+
+  $success_message = 'setTimeout(function() {
+                        alert("' . $success_message . '");
+                      }, 0);';
 }
 else {
   $default_filled_by = $_COOKIE["filled_by"];
 }
+
+$sql = "SELECT * FROM log ORDER BY datetime DESC LIMIT 1";
+$data = mysql_fetch_assoc( mysql_query($sql,$link) );
+
+$last_fill = $data;
 
 $default_outside_temp = file_get_contents( 'http://api.openweathermap.org/data/2.5/weather?lat=43.037254&lon=-82.503141' );
 $default_outside_temp = json_decode($default_outside_temp, true);
@@ -36,7 +42,6 @@ $default_outside_temp = round((( $default_outside_temp["main"]["temp"] - 273.15 
 ?>
 <?php include 'header.php' ?>
 <div class="content">
-  <?php echo $success_message; ?>
   <form action="/" method="post">
     <input type="hidden" name="outside_temp" id="outside_temp" value="<?php echo $default_outside_temp ?>">
     <label for="stove_temp">Stove Temperature</label>
@@ -70,5 +75,9 @@ $default_outside_temp = round((( $default_outside_temp["main"]["temp"] - 273.15 
     <input type="text" name="filled_by" id="filled_by" value="<?php echo $default_filled_by ?>" required>
     <input type="submit" value="Submit Log">
   </form>
+  <script type="text/javascript">
+    <?php echo $success_message; ?>
+    last_fill_alert = 'The stove was last filled on <?php echo date("F jS", strtotime($last_fill["datetime"]) ); ?> at <?php echo date("g:ia", strtotime($last_fill["datetime"]) ); ?> by <?php echo $last_fill["filled_by"]; ?>.\n\nThe stove temperature was <?php echo $last_fill["stove_temp"]; ?>° and the outside temperature was <?php echo $last_fill["outside_temp"]; ?>°.\n\nIt was <?php echo $last_fill["pre_fill_level"]; ?>% full, and was filled to <?php echo $last_fill["post_fill_level"]; ?>%.';
+  </script>
 </div>
 <?php include 'footer.php' ?>
