@@ -1,5 +1,6 @@
 $(function(){
   FastClick.attach(document.body);
+  $("form").validate({errorPlacement: function(error, element) { }});
 });
 
 function alert(content){

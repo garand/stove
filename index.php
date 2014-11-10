@@ -40,10 +40,10 @@ $default_outside_temp = round((( $default_outside_temp["main"]["temp"] - 273.15 
   <form action="/" method="post">
     <input type="hidden" name="outside_temp" id="outside_temp" value="<?php echo $default_outside_temp ?>">
     <label for="stove_temp">Stove Temperature</label>
-    <input type="tel" name="stove_temp" id="stove_temp">
+    <input type="tel" name="stove_temp" id="stove_temp" required>
 
     <label for="pre_fill_level">Pre-Fill Wood Level</label>
-    <input type="radio" name="pre_fill_level" id="pre_fill_level_0" value="0">
+    <input type="radio" name="pre_fill_level" id="pre_fill_level_0" value="0" required>
     <label for="pre_fill_level_0">Empty</label>
     <input type="radio" name="pre_fill_level" id="pre_fill_level_25" value="25">
     <label for="pre_fill_level_25">1/4</label>
@@ -55,7 +55,7 @@ $default_outside_temp = round((( $default_outside_temp["main"]["temp"] - 273.15 
     <label for="pre_fill_level_100">Full</label>
 
     <label for="post_fill_level">Post-Fill Wood Level</label>
-    <input type="radio" name="post_fill_level" id="post_fill_level_0" value="0">
+    <input type="radio" name="post_fill_level" id="post_fill_level_0" value="0" required>
     <label for="post_fill_level_0">Empty</label>
     <input type="radio" name="post_fill_level" id="post_fill_level_25" value="25">
     <label for="post_fill_level_25">1/4</label>
@@ -67,7 +67,7 @@ $default_outside_temp = round((( $default_outside_temp["main"]["temp"] - 273.15 
     <label for="post_fill_level_100">Full</label>
 
     <label for="filled_by">Filled By</label>
-    <input type="text" name="filled_by" id="filled_by" value="<?php echo $default_filled_by ?>">
+    <input type="text" name="filled_by" id="filled_by" value="<?php echo $default_filled_by ?>" required>
     <input type="submit" value="Submit Log">
   </form>
 </div>
