@@ -16,19 +16,23 @@
     },
     "twilio_sid": {
       "description": "Your Twilio SID",
-      "value": ""
+      "value": "",
+      "required": false
     },
     "twilio_token": {
       "description": "Your Twilio Token",
-      "value": ""
+      "value": "",
+      "required": false
     },
     "twilio_to": {
       "description": "The number to send SMS notifications to",
-      "value": ""
+      "value": "",
+      "required": false
     },
     "twilio_from": {
       "description": "The Twilio number to send SMS notifications from",
-      "value": ""
+      "value": "",
+      "required": false
     }
   },
   "addons": [
