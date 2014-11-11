@@ -14,7 +14,7 @@ Stove is an app for tracking stove temperature and wood levels.
 Clone this repository and run the following command.
 
 ```
-./setup
+script/setup
 ```
 
 ### Configuration
