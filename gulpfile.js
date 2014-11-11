@@ -1,12 +1,17 @@
 var gulp         = require('gulp');
 var sass         = require('gulp-sass');
+var shell        = require('gulp-shell');
 var browserSync  = require('browser-sync');
 var minifyCSS    = require('gulp-minify-css');
 var autoprefixer = require('gulp-autoprefixer');
 
+gulp.task('server', shell.task([
+  'php -S 0.0.0.0:5703'
+]));
+
 gulp.task('browser-sync', function() {
   browserSync({
-    proxy: "localhost:8000",
+    proxy: "localhost:5703",
     notify: false
   });
 });
@@ -32,4 +37,4 @@ gulp.task('watch', function() {
   gulp.watch("./assets/js/*.js", ['reload']);
 });
 
-gulp.task('default', ['browser-sync', 'sass', 'watch'], function() {});
+gulp.task('default', ['server', 'browser-sync', 'sass', 'watch'], function() {});
