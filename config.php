@@ -16,4 +16,8 @@ elseif ( !(getenv("db_name") && getenv("db_user") && getenv("db_host")) ) {
   die;
 }
 
-date_default_timezone_set('America/Detroit');
+$timezone = file_get_contents( 'https://maps.googleapis.com/maps/api/timezone/json?location=' . getenv("outside_temp_lat") . ',' . getenv("outside_temp_long") . "&timestamp=" . time() );
+$timezone = json_decode($timezone, true);
+$timezone = $timezone["timeZoneId"];
+
+date_default_timezone_set( $timezone );
