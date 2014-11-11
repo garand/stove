@@ -3,6 +3,8 @@
   "description": "An app for tracking stove temperature and wood levels",
   "env": {
     "BUILDPACK_URL": "https://github.com/heroku/heroku-buildpack-php",
+    "outside_temp_lat": "",
+    "outside_temp_long": "",
     "twilio_sid": "",
     "twilio_token": "",
     "twilio_to": "",
