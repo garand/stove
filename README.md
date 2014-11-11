@@ -10,21 +10,7 @@ Stove is an app for tracking stove temperature and wood levels.
 Clone this repository and run `npm install` in the root directory.
 
 ### Configuration
-In order to configure a local copy, create a MySQL database with the following table structure. You can download and import [this SQL file](http://cl.ly/YSmF/download/stove.sql) to automatically generate the table as well.
-
-Table Name: **log**
-
-| Field                         | Type     | Length |
-|-------------------------------|----------|--------|
-| id <sup>_(primary key)_</sup> | INT      | 11     |
-| outside_temp                  | VARCHAR  | 10     |
-| stove_temp                    | VARCHAR  | 10     |
-| pre_fill_level                | VARCHAR  | 10     |
-| post_fill_level               | VARCHAR  | 10     |
-| filled_by                     | VARCHAR  | 200    |
-| datetime                      | DATETIME |        |
-
-After the table is setup, configure the connection information for the database in the [`config.local.sample.php`](https://github.com/garand/stove/blob/master/config.local.sample.php) file, and rename it to `config.local.php`.
+In order to configure a local copy, create a MySQL database and configure the connection information for the database in the [`config.local.sample.php`](https://github.com/garand/stove/blob/master/config.local.sample.php) file, and rename it to `config.local.php`. When the app loads, it will create the necessary table structure.
 
 To enable SMS notifications, enter your Twilio SID, token, to number, and from number, in the `config.local.php` file as well. Make sure to format the to and from number with the international code and a leading +, for example: `+18005551234`.
 
@@ -42,7 +28,6 @@ That will start up the PHP server (on port 5703), begin watching the project, an
 Be sure to view your site on the proxy created by BrowserSync. The port number will be in the gulp log. It should be [localhost:3000](http://localhost:3000) by default.
 
 ### Environment Variables
-
 These are the environment variables required for deploying the app.
 
 - outside_temp_lat

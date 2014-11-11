@@ -15,6 +15,21 @@ if (!$db_selected) {
   die ("Error: " . mysql_error());
 }
 
+// Check if log table exists. If not, create it.
+if ( mysql_num_rows( mysql_query("SHOW TABLES LIKE 'log'") ) !== 1 ) {
+  $sql = "CREATE TABLE `log` (
+          `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+          `outside_temp` varchar(10) DEFAULT NULL,
+          `stove_temp` varchar(10) DEFAULT NULL,
+          `pre_fill_level` varchar(10) DEFAULT NULL,
+          `post_fill_level` varchar(10) DEFAULT NULL,
+          `filled_by` varchar(200) DEFAULT NULL,
+          `datetime` datetime DEFAULT NULL,
+          PRIMARY KEY (`id`)
+          )";
+  $result = mysql_query($sql, $link);
+}
+
 function send_sms( $body ) {
   $sid = getenv("twilio_sid");
   $token = getenv("twilio_token");
