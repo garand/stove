@@ -6,17 +6,17 @@
 
 Stove is an app for tracking stove temperature and wood levels.
 
-### Setup
+## Setup
 Clone this repository and run `npm install` in the root directory.
 
-### Configuration
+## Configuration
 In order to configure a local copy, create a MySQL database and configure the connection information for the database in the [`config.local.sample.php`](https://github.com/garand/stove/blob/master/config.local.sample.php) file, and rename it to `config.local.php`. When the app loads, it will create the necessary table structure.
 
 To enable SMS notifications, enter your Twilio SID, token, to number, and from number, in the `config.local.php` file as well. Make sure to format the to and from number with the international code and a leading +, for example: `+18005551234`.
 
 To configure the location for the outside temperature, set the environment variables for latitude and longitude coordinates of your stove in the `config.local.php` file.
 
-### Start Server
+## Start Server
 This is built to be run with PHP's built in server, in conjunction with [gulp](http://gulpjs.com) for building the project. After running `npm install`, startup gulp:
 
 ```
@@ -27,7 +27,7 @@ That will start up the PHP server (on port 5703), begin watching the project, an
 
 Be sure to view your site on the proxy created by BrowserSync. The port number will be in the gulp log. It should be [localhost:3000](http://localhost:3000) by default.
 
-### Environment Variables
+## Environment Variables
 These are the environment variables required for deploying the app.
 
 - outside_temp_lat
