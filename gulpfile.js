@@ -28,7 +28,7 @@ gulp.task('reload', function () {
 
 gulp.task('watch', function() {
   gulp.watch('./assets/scss/**/*.scss', ['sass']);
-  gulp.watch("./*.html", ['reload']);
+  gulp.watch("./*.php", ['reload']);
   gulp.watch("./assets/js/*.js", ['reload']);
 });
 
