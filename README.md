@@ -14,15 +14,15 @@ In order to configure a local copy, create a MySQL database with the following t
 
 Table Name: **log**
 
-| Field              | Type     | Length |
-|--------------------|----------|--------|
-| id _(primary key)_ | INT      | 11     |
-| outside_temp       | VARCHAR  | 10     |
-| stove_temp         | VARCHAR  | 10     |
-| pre_fill_level     | VARCHAR  | 10     |
-| post_fill_level    | VARCHAR  | 10     |
-| filled_by          | VARCHAR  | 200    |
-| datetime           | DATETIME |        |
+| Field                         | Type     | Length |
+|-------------------------------|----------|--------|
+| id <sup>_(primary key)_</sup> | INT      | 11     |
+| outside_temp                  | VARCHAR  | 10     |
+| stove_temp                    | VARCHAR  | 10     |
+| pre_fill_level                | VARCHAR  | 10     |
+| post_fill_level               | VARCHAR  | 10     |
+| filled_by                     | VARCHAR  | 200    |
+| datetime                      | DATETIME |        |
 
 After the table is setup, configure the connection information for the database in the [`config.local.sample.php`](https://github.com/garand/stove/blob/master/config.local.sample.php) file, and rename it to `config.local.php`.
 
