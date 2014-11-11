@@ -8,16 +8,13 @@ Stove is an app for tracking stove temperature and wood levels.
 
 ## Requirements
 - [Node](http://nodejs.org/download/)
-- [Composer](https://getcomposer.org)
 - [MySQL](http://blog.joefallon.net/2013/10/install-mysql-on-mac-osx-using-homebrew/) (I recommend installing via Homebrew)
 
 ## Local Setup
-Clone this repository and run the following commands in the root directory.
+Clone this repository and run the following command.
 
 ```
-npm install
-composer install
-gulp
+./setup
 ```
 
 ### Configuration
