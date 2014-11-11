@@ -1,9 +1,9 @@
 <?php
 
-$db_name = ""; // Database Name
-$db_user = ""; // Database User
-$db_pass = ""; // Database Password
-$db_host = ""; // Database Host
+putenv("db_name="); // Database Name
+putenv("db_user="); // Database User
+putenv("db_pass="); // Database Password
+putenv("db_host="); // Database Host
 
 putenv("outside_temp_lat="); // Latitude location of stove
 putenv("outside_temp_long="); // Longitude location of stove
