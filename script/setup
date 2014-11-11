@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Install gulp
+printf "Installing gulp..."
+npm install >/dev/null
+printf "Done!\n"
+
+# Installing Composer
+printf "Installing Composer..."
+if ! which composer >/dev/null; then
+  curl -sS https://getcomposer.org/installer | php >/dev/null
+  php composer.phar update >/dev/null
+else
+  composer update >/dev/null
+fi
+printf "Done!\n"
+
+gulp
