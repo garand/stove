@@ -106,10 +106,10 @@ input {
         border-radius: 0;
         border-left: 0;
         padding-left: .5px;
-      }
 
-      @media #{$retina} {
-        padding-left: .25px;
+        @media #{$retina} {
+          padding-left: .25px;
+        }
       }
     }
 
@@ -120,15 +120,11 @@ input {
         border-radius: 0;
         border-right: 0;
         padding-right: .5px;
+
+        @media #{$retina} {
+          padding-right: .25px;
+        }
       }
-
-      @media #{$retina} {
-        padding-right: .25px;
-      }
-    }
-
-    &[value="50"] + label {
-
     }
 
     &:checked + label {
