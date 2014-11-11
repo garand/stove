@@ -1,6 +1,7 @@
 {
   "name": "Stove",
   "description": "An app for tracking stove temperature and wood levels",
+  "logo": "https://raw.githubusercontent.com/garand/stove/master/assets/img/icon.png",
   "env": {
     "BUILDPACK_URL": "https://github.com/heroku/heroku-buildpack-php",
     "outside_temp_lat": {
