@@ -31,9 +31,12 @@ else {
 }
 
 $sql = "SELECT * FROM log ORDER BY datetime DESC LIMIT 1";
-$data = mysql_fetch_assoc( mysql_query($sql,$link) );
+$last_fill = mysql_fetch_assoc( mysql_query($sql,$link) );
 
-$last_fill = $data;
+if ( mysql_num_rows(mysql_query($sql,$link)) > 0 )
+  $last_fill_message = 'The stove was last filled on ' . date("F jS", strtotime($last_fill["datetime"]) ) . ' at ' . date("g:ia", strtotime($last_fill["datetime"]) ) . ' by ' . $last_fill["filled_by"] . '.\n\nThe stove temperature was ' . $last_fill["stove_temp"] . '° and the outside temperature was ' . $last_fill["outside_temp"] . '°.\n\nIt was ' . $last_fill["pre_fill_level"] . '% full, and was filled to ' . $last_fill["post_fill_level"] . '%.';
+else
+  $last_fill_message = 'No stove fillings have been logged.';
 
 $default_outside_temp = file_get_contents( 'http://api.openweathermap.org/data/2.5/weather?lat=' . getenv("outside_temp_lat") . '&lon=' . getenv("outside_temp_long") );
 $default_outside_temp = json_decode($default_outside_temp, true);
@@ -77,7 +80,7 @@ $default_outside_temp = round((( $default_outside_temp["main"]["temp"] - 273.15 
   </form>
   <script type="text/javascript">
     <?php echo $success_message; ?>
-    last_fill_alert = 'The stove was last filled on <?php echo date("F jS", strtotime($last_fill["datetime"]) ); ?> at <?php echo date("g:ia", strtotime($last_fill["datetime"]) ); ?> by <?php echo $last_fill["filled_by"]; ?>.\n\nThe stove temperature was <?php echo $last_fill["stove_temp"]; ?>° and the outside temperature was <?php echo $last_fill["outside_temp"]; ?>°.\n\nIt was <?php echo $last_fill["pre_fill_level"]; ?>% full, and was filled to <?php echo $last_fill["post_fill_level"]; ?>%.';
+    last_fill_alert = "<?php echo $last_fill_message; ?>"
   </script>
 </div>
 <?php include 'footer.php' ?>
