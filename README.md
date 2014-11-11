@@ -2,7 +2,7 @@
 <br><br>
 <img src="https://codeship.com/projects/ebc21970-4aa4-0132-eb1f-2eec968ed96f/status">
 &nbsp;&nbsp;
-<a href="https://heroku.com/deploy"><img src="https://www.herokucdn.com/deploy/button.png"></a>
+<a href="https://heroku.com/deploy"><img src="https://cloud.githubusercontent.com/assets/82437/5000264/f14de952-69b7-11e4-9f96-adf6c0588f7c.png"></a>
 
 Stove is an app for tracking stove temperature and wood levels.
 
