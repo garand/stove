@@ -12,7 +12,7 @@ Clone this repository and run `npm install` in the root directory.
 ### Configuration
 In order to configure a local copy, create a MySQL database with the following table structure. You can download and import [this SQL file](http://cl.ly/YSmF/download/stove.sql) to automatically generate the table as well.
 
-##### Table Name: Log
+Table Name: **log**
 
 | Field              | Type     | Length |
 |--------------------|----------|--------|
