@@ -12,7 +12,8 @@ gulp.task('server', shell.task([
 gulp.task('browser-sync', function() {
   browserSync({
     proxy: "localhost:5703",
-    notify: false
+    notify: false,
+    ghostMode: false
   });
 });
 
