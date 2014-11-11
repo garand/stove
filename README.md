@@ -28,6 +28,8 @@ After the table is setup, configure the connection information for the database 
 
 To enable SMS notifications, enter your Twilio SID, token, to number, and from number, in the `config.local.php` file as well. Make sure to format the to and from number with the international code and a leading +, for example: `+18005551234`.
 
+To configure the location for the outside temperature, set the environment variables for latitude and longitude coordinates of your stove in the `config.local.php` file.
+
 ### Start Server
 This is built to be run with PHP's built in server, in conjunction with [gulp](http://gulpjs.com) for building the project. After running `npm install`, startup gulp:
 
@@ -38,3 +40,14 @@ gulp
 That will start up the PHP server (on port 5703), begin watching the project, and launch your browser to the proxied version of the page, because this uses [BrowserSync](http://www.browsersync.io) for automatic reloading and style injection.
 
 Be sure to view your site on the proxy created by BrowserSync. The port number will be in the gulp log. It should be [localhost:3000](http://localhost:3000) by default.
+
+### Environment Variables
+
+These are the environment variables required for deploying the app.
+
+- outside_temp_lat
+- outside_temp_long
+- twilio_sid
+- twilio_token
+- twilio_to
+- twilio_from

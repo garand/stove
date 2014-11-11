@@ -35,7 +35,7 @@ $data = mysql_fetch_assoc( mysql_query($sql,$link) );
 
 $last_fill = $data;
 
-$default_outside_temp = file_get_contents( 'http://api.openweathermap.org/data/2.5/weather?lat=43.037254&lon=-82.503141' );
+$default_outside_temp = file_get_contents( 'http://api.openweathermap.org/data/2.5/weather?lat=' . getenv("outside_temp_lat") . '&lon=' . getenv("outside_temp_long") );
 $default_outside_temp = json_decode($default_outside_temp, true);
 $default_outside_temp = round((( $default_outside_temp["main"]["temp"] - 273.15 ) * 1.8) + 32);
 
