@@ -1,0 +1,14 @@
+{
+  "name": "Stove",
+  "description": "An app for tracking stove temperature and wood levels",
+  "env": {
+    "BUILDPACK_URL": "https://github.com/heroku/heroku-buildpack-php",
+    "twilio_sid": "",
+    "twilio_token": "",
+    "twilio_to": "",
+    "twilio_from": "",
+  },
+  "addons": [
+    "cleardb"
+  ]
+}
