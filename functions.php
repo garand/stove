@@ -24,6 +24,7 @@ if ( mysql_num_rows( mysql_query("SHOW TABLES LIKE 'log'") ) !== 1 ) {
           `pre_fill_level` varchar(10) DEFAULT NULL,
           `post_fill_level` varchar(10) DEFAULT NULL,
           `filled_by` varchar(200) DEFAULT NULL,
+          `comments` text DEFAULT NULL,
           `datetime` datetime DEFAULT NULL,
           PRIMARY KEY (`id`)
           )";

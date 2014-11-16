@@ -10,12 +10,18 @@ if ( $_POST ) {
   $pre_fill_level = mysql_real_escape_string( $pre_fill_level );
   $post_fill_level = mysql_real_escape_string( $post_fill_level );
   $filled_by = mysql_real_escape_string( $filled_by );
+  $comments = mysql_real_escape_string( $comments );
   $datetime = date( 'Y-m-d H:i:s', time());
 
-  $sql = "INSERT INTO log (outside_temp,stove_temp,pre_fill_level,post_fill_level,filled_by,datetime) VALUES ('$outside_temp','$stove_temp','$pre_fill_level','$post_fill_level','$filled_by','$datetime')";
+  $sql = "INSERT INTO log (outside_temp,stove_temp,pre_fill_level,post_fill_level,filled_by,comments,datetime) VALUES ('$outside_temp','$stove_temp','$pre_fill_level','$post_fill_level','$filled_by','$comments','$datetime')";
   $data = mysql_query($sql,$link);
 
-  send_sms( "Stove Temp: " . $stove_temp . "\nOutside Temp: " . $outside_temp . "\nPre-Fill Level: " . $pre_fill_level . "%\nPost-Fill Level: " . $post_fill_level . "%\nFilled By: " . $filled_by );
+  if ( $comments != '' )
+    $comments_sms = "\nComments: " . $comments;
+  else
+    $comments_sms = '';
+
+  send_sms( "Stove Temp: " . $stove_temp . "\nOutside Temp: " . $outside_temp . "\nPre-Fill Level: " . $pre_fill_level . "%\nPost-Fill Level: " . $post_fill_level . "%\nFilled By: " . $filled_by . $comments_sms);
 
   setcookie( "filled_by" , $filled_by, time() + (10 * 365 * 24 * 60 * 60) );
   $default_filled_by = $filled_by;
@@ -33,8 +39,13 @@ else {
 $sql = "SELECT * FROM log ORDER BY datetime DESC LIMIT 1";
 $last_fill = mysql_fetch_assoc( mysql_query($sql,$link) );
 
+if ( $last_fill["comments"] != '' )
+  $comments = '\n\nComments:\n' . $last_fill["comments"];
+else
+  $comments = '';
+
 if ( mysql_num_rows(mysql_query($sql,$link)) > 0 )
-  $last_fill_message = 'The stove was last filled on ' . date("F jS", strtotime($last_fill["datetime"]) ) . ' at ' . date("g:ia", strtotime($last_fill["datetime"]) ) . ' by ' . $last_fill["filled_by"] . '.\n\nThe stove temperature was ' . $last_fill["stove_temp"] . '° and the outside temperature was ' . $last_fill["outside_temp"] . '°.\n\nIt was ' . $last_fill["pre_fill_level"] . '% full, and was filled to ' . $last_fill["post_fill_level"] . '%.';
+  $last_fill_message = 'The stove was last filled on ' . date("F jS", strtotime($last_fill["datetime"]) ) . ' at ' . date("g:ia", strtotime($last_fill["datetime"]) ) . ' by ' . $last_fill["filled_by"] . '.\n\nThe stove temperature was ' . $last_fill["stove_temp"] . '° and the outside temperature was ' . $last_fill["outside_temp"] . '°.\n\nIt was ' . $last_fill["pre_fill_level"] . '% full, and was filled to ' . $last_fill["post_fill_level"] . '%.' . $comments;
 else
   $last_fill_message = 'No stove fillings have been logged.';
 
@@ -76,6 +87,10 @@ $default_outside_temp = round((( $default_outside_temp["main"]["temp"] - 273.15 
 
     <label for="filled_by">Filled By</label>
     <input type="text" name="filled_by" id="filled_by" value="<?php echo $default_filled_by ?>" required>
+
+    <label for="comments">Comments</label>
+    <input type="text" name="comments" id="comments">
+
     <input type="submit" value="Submit Log">
   </form>
   <script type="text/javascript">
