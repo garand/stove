@@ -2,39 +2,7 @@
 
 include 'functions.php';
 
-if ( $_POST ) {
-  extract( $_POST );
-
-  $outside_temp = mysql_real_escape_string( $outside_temp );
-  $stove_temp = mysql_real_escape_string( $stove_temp );
-  $pre_fill_level = mysql_real_escape_string( $pre_fill_level );
-  $post_fill_level = mysql_real_escape_string( $post_fill_level );
-  $filled_by = mysql_real_escape_string( $filled_by );
-  $comments = mysql_real_escape_string( $comments );
-  $datetime = date( 'Y-m-d H:i:s', time());
-
-  $sql = "INSERT INTO log (outside_temp,stove_temp,pre_fill_level,post_fill_level,filled_by,comments,datetime) VALUES ('$outside_temp','$stove_temp','$pre_fill_level','$post_fill_level','$filled_by','$comments','$datetime')";
-  $data = mysql_query($sql,$link);
-
-  if ( $comments != '' )
-    $comments_sms = "\nComments: " . $comments;
-  else
-    $comments_sms = '';
-
-  send_sms( "Stove Temp: " . $stove_temp . "\nOutside Temp: " . $outside_temp . "\nPre-Fill Level: " . $pre_fill_level . "%\nPost-Fill Level: " . $post_fill_level . "%\nFilled By: " . $filled_by . $comments_sms);
-
-  setcookie( "filled_by" , $filled_by, time() + (10 * 365 * 24 * 60 * 60) );
-  $default_filled_by = $filled_by;
-
-  $success_message = "Thank you for serving!";
-
-  $success_message = 'setTimeout(function() {
-                        alert("' . $success_message . '");
-                      }, 0);';
-}
-else {
-  $default_filled_by = $_COOKIE["filled_by"];
-}
+$default_filled_by = $_COOKIE["filled_by"];
 
 $sql = "SELECT * FROM log ORDER BY datetime DESC LIMIT 1";
 $last_fill = mysql_fetch_assoc( mysql_query($sql,$link) );
@@ -56,7 +24,7 @@ $default_outside_temp = round((( $default_outside_temp["main"]["temp"] - 273.15 
 ?>
 <?php include 'header.php' ?>
 <div class="content">
-  <form action="/" method="post">
+  <form action="/submit.php" method="post">
     <input type="hidden" name="outside_temp" id="outside_temp" value="<?php echo $default_outside_temp ?>">
     <label for="stove_temp">Stove Temperature</label>
     <input type="tel" name="stove_temp" id="stove_temp" required>
@@ -94,7 +62,6 @@ $default_outside_temp = round((( $default_outside_temp["main"]["temp"] - 273.15 
     <input type="submit" value="Submit Log">
   </form>
   <script type="text/javascript">
-    <?php echo $success_message; ?>
     last_fill_alert = "<?php echo $last_fill_message; ?>"
   </script>
 </div>
