@@ -18,6 +18,9 @@
 <body>
   <header>
     <div class="header-inner">
+      <?php echo $wind_direction_style; ?>
+      <div class="compass" data-direction="<?php echo $wind_direction_deg; ?>"></div>
+      <div class="wind-speed"><?php echo $wind_speed ?><span>mph</span></div>
       <div class="last-fill">
         <span>i</span>
       </div>

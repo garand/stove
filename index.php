@@ -17,9 +17,44 @@ if ( mysql_num_rows(mysql_query($sql,$link)) > 0 )
 else
   $last_fill_message = 'No stove fillings have been logged.';
 
-$default_outside_temp = file_get_contents( 'http://api.openweathermap.org/data/2.5/weather?lat=' . getenv("outside_temp_lat") . '&lon=' . getenv("outside_temp_long") );
-$default_outside_temp = json_decode($default_outside_temp, true);
-$default_outside_temp = round((( $default_outside_temp["main"]["temp"] - 273.15 ) * 1.8) + 32);
+$current_outside_condition = file_get_contents( 'http://api.openweathermap.org/data/2.5/weather?lat=' . getenv("outside_temp_lat") . '&lon=' . getenv("outside_temp_long") );
+$current_outside_condition = json_decode($current_outside_condition, true);
+
+$wind_direction = $current_outside_condition["wind"]["deg"];
+$wind_speed = round( $current_outside_condition["wind"]["speed"] * 2.23693629 );
+
+$wind_direction_deg = $wind_direction;
+
+$wind_direction_style = '
+<style type="text/css">
+.compass {
+  -webkit-transform: rotate(' . $wind_direction_deg . 'deg);
+  -ms-transform: rotate(' . $wind_direction_deg . 'deg);
+  transform: rotate(' . $wind_direction_deg . 'deg);
+}
+</style>';
+
+if ( $wind_direction >= -22.5 && $wind_direction <= 22.5 )
+  $wind_direction = "North";
+else if ( $wind_direction > 22.5 && $wind_direction < 67.5 )
+  $wind_direction = "Northeast";
+else if ( $wind_direction >= 67.5 && $wind_direction <= 112.5 )
+  $wind_direction = "East";
+else if ( $wind_direction > 112.5 && $wind_direction < 157.5 )
+  $wind_direction = "Southeast";
+else if ( $wind_direction >= 157.5 || $wind_direction <= -157.5 )
+  $wind_direction = "South";
+else if ( $wind_direction > -157.5 && $wind_direction < -112.5 )
+  $wind_direction = "Southwest";
+else if ( $wind_direction >= -112.5 && $wind_direction <= -67.5 )
+  $wind_direction = "West";
+else if ( $wind_direction >= -67.5 && $wind_direction <= -22.5 )
+  $wind_direction = "Northwest";
+else
+  $wind_direction = "Undefined";
+
+$default_outside_temp = round((( $current_outside_condition["main"]["temp"] - 273.15 ) * 1.8) + 32);
+
 
 ?>
 <?php include 'header.php' ?>
