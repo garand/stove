@@ -35,23 +35,23 @@ $wind_direction_style = '
 </style>';
 
 if ( $wind_direction >= -22.5 && $wind_direction <= 22.5 )
-  $wind_direction = "North";
+  $wind_direction = "N";
 else if ( $wind_direction > 22.5 && $wind_direction < 67.5 )
-  $wind_direction = "Northeast";
+  $wind_direction = "NE";
 else if ( $wind_direction >= 67.5 && $wind_direction <= 112.5 )
-  $wind_direction = "East";
+  $wind_direction = "E";
 else if ( $wind_direction > 112.5 && $wind_direction < 157.5 )
-  $wind_direction = "Southeast";
+  $wind_direction = "SE";
 else if ( $wind_direction >= 157.5 || $wind_direction <= -157.5 )
-  $wind_direction = "South";
+  $wind_direction = "S";
 else if ( $wind_direction > -157.5 && $wind_direction < -112.5 )
-  $wind_direction = "Southwest";
+  $wind_direction = "SW";
 else if ( $wind_direction >= -112.5 && $wind_direction <= -67.5 )
-  $wind_direction = "West";
+  $wind_direction = "W";
 else if ( $wind_direction >= -67.5 && $wind_direction <= -22.5 )
-  $wind_direction = "Northwest";
+  $wind_direction = "NW";
 else
-  $wind_direction = "Undefined";
+  $wind_direction = "";
 
 $default_outside_temp = round((( $current_outside_condition["main"]["temp"] - 273.15 ) * 1.8) + 32);
 
